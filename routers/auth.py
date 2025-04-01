@@ -17,3 +17,8 @@ class TokenResponse(BaseModel):
 async def login(login_data: LoginRequest):
     if login_data.username == "admin" and login_data.password == "senha123":
         return {"access_token": "token_exemplo"}
+    else:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Usuário ou senha inválidos"
+        )
