@@ -39,3 +39,8 @@ async def obter_transacao(transacao_id: int):
 
 @router.put("/{transacao_id}", response_model=Transacao)
 async def atualizar_status_transacao(transacao_id: int, novo_status: str):
+    for transacao in transacoes_db:
+        if transacao["id"] == transacao_id:
+            transacao["status"] = novo_status
+            return transacao
+    raise HTTPException(status_code=404, detail="Transação não encontrada")
