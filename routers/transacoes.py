@@ -29,3 +29,11 @@ async def listar_transacoes(conta: Optional[str] = None, data: Optional[str] = N
         resultados = [t for t in resultados if t["status"] == status]
     return resultados
 
+#Define um endpoint HTTP GET para obter os detalhes de uma transação específica identificada por transacao_id.
+@router.get("/{transacao_id}", response_model=Transacao)
+async def obter_transacao(transacao_id: int):
+    for transacao in transacoes_db:
+        if transacao["id"] == transacao_id:
+            return transacao
+    raise HTTPException(status_code=404, detail="Transação não encontrada")
+
