@@ -1,0 +1,7 @@
+Lista as dependências do projeto.
+
+
+fastapi : framework web pra construie apis
+uvicorn : Ininiar servidor web 
+motor : conexão e manipulação do Mongo db
+pydantic : validação de dados
