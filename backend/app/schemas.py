@@ -1,1 +1,0 @@
-# Definição dos esquemas de dados (Pydantic)
